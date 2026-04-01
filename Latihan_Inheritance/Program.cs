@@ -1,4 +1,15 @@
-﻿public class user
+﻿Siswa siswaObj = new Siswa("Atika", "atika@gmail.com", "oya", "siswa", "XPG1");
+Guru guruObj = new Guru("Zahra", "zahra@gmail.com", "ungke", "guru", "IPAS");
+
+siswaObj.Tampilkaninfo();
+siswaObj.SubmitTugas();
+
+Console.WriteLine();
+
+guruObj.Tampilkaninfo();
+guruObj.NilaiTugas();
+
+public class user
 {
     public string nama;
     public string email;
@@ -16,5 +27,35 @@
     public void Tampilkaninfo()
     {
         Console.WriteLine($"Nama: {nama} | Role: {role}");
+    }
+}
+
+class Siswa : user
+{
+    public string ClassName;
+
+    public Siswa(string nama, string email, string password, string role, string className) : base(nama, email, password, role)
+    {
+        ClassName = className;
+    }
+
+    public void SubmitTugas()
+    {
+        Console.WriteLine($"{nama} dari kelas {ClassName} sudah mengumpulkan tugas");
+    }
+}
+
+class Guru : user
+{
+    public string Mapel;
+
+    public Guru (string nama, string email, string password, string role, string mapel) : base (nama, email, password, role)
+    {
+        Mapel = mapel;
+    }    
+
+    public void NilaiTugas()
+    {
+        Console.WriteLine($"Guru {nama} telah menilai semua tugas mapel {Mapel}");
     }
 }
